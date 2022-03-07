@@ -40,7 +40,10 @@ INSTALLED_APPS = [
 
     'accounts',
     'booking',
-    'inventory'
+    'inventory',
+
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [

@@ -44,6 +44,9 @@ class VehiclePricing(models.Model):
     vehicle_type = models.ForeignKey(VehicleType, related_name='branch_wise_price', on_delete=models.PROTECT)
     branch = models.ForeignKey(Branch, related_name='vehicle_price_list', on_delete=models.PROTECT)
 
+    class Meta:
+        unique_together = ('branch', 'vehicle_type')
+
     def __str__(self):
         return f'{self.pk}'
 
@@ -60,7 +63,7 @@ class Vehicle(models.Model):
     vehicle_type = models.ForeignKey(VehicleType, related_name='vehicles', on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.model
+        return f'{self.make} {self.model} {self.variant}'
 
 
 class Inventory(models.Model):
